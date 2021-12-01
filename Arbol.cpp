@@ -60,7 +60,7 @@ void Arbol::update(Nodo *&raiz)
         rh = raiz->der->height;
 
     raiz->height = 1 + max(lh, rh);
-    raiz->balance = lh - rh;
+    raiz->balance = rh - lh;
 }
 
 void Arbol::insert(Nodo *&raiz, const int &v)
@@ -86,31 +86,26 @@ void Arbol::insert(Nodo *&raiz, const int &v)
 
 void Arbol::balance(Nodo *&raiz, int v)
 {
-    if(raiz->balance == 2){
-        if(raiz->izq->balance >= 0){
+    if(raiz->balance == -2){
+        if(raiz->izq->balance <= 0){
             left_left(raiz);
         }
         else
         {
-            cout << "\n\tLEFT RIGHT";
             left_right(raiz);
-            getch();
         }
     }
-    else if(raiz->balance == -2){
-        if(raiz->der->balance <= 0)
+    else if(raiz->balance == 2){
+        if(raiz->der->balance >= 0)
         {
-            cout << "\n\tRIGHT RIGHT";
             right_right(raiz);
         }
         else
         {
-            cout << "\n\tRIGHT LEFT";
             right_left(raiz);
         }
         getch();
-    }
-       
+    }   
 }
 
 Nodo* Arbol::left_left(Nodo *&raiz)
@@ -129,7 +124,7 @@ Nodo* Arbol::left_left(Nodo *&raiz)
 }
 void Arbol::left_right(Nodo *&raiz)
 {
-    raiz->izq = right_right(raiz);
+    raiz->izq = right_right(raiz->izq);
     left_left(raiz);
 }
 Nodo* Arbol::right_right(Nodo *&raiz)
@@ -148,7 +143,7 @@ Nodo* Arbol::right_right(Nodo *&raiz)
 }
 void Arbol::right_left(Nodo *&raiz)
 {
-    raiz->der = left_left(raiz);
+    raiz->der = left_left(raiz->der);
     right_right(raiz);
 }
 
