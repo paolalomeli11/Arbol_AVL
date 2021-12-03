@@ -39,7 +39,8 @@ int main()
             process_5(ABB);
             break;
         case 6:
-            cout << "\n\n\tAdios :)";
+            cout << "\n\n\tGoodbye :)";
+            getch();
             break;
         default:
             break;

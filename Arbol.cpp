@@ -68,10 +68,12 @@ void Arbol::insert(Nodo *&raiz, const int &v)
     if(raiz == nullptr){
         Nodo *nodo_nuevo = new Nodo(v);
         raiz = nodo_nuevo;
+        cout << "\n\tAction completed successfully.\n";
+        getch();
         return;
     }
     if(v == raiz->item){
-        cout << "\n\tNo se pudo realizar la accion.\n";
+        cout << "\n\tAction could not be completed.\n";
         return;
         getch();
     }
@@ -85,9 +87,11 @@ void Arbol::insert(Nodo *&raiz, const int &v)
 }
 
 void Arbol::balance(Nodo *&raiz, int v)
-{
-    if(raiz->balance == -2){
-        if(raiz->izq->balance <= 0){
+{   
+    if(raiz->balance == -2)
+    {
+        if(raiz->izq->balance <= 0)
+        {
             left_left(raiz);
         }
         else
@@ -95,7 +99,8 @@ void Arbol::balance(Nodo *&raiz, int v)
             left_right(raiz);
         }
     }
-    else if(raiz->balance == 2){
+    else if(raiz->balance == 2)
+    {
         if(raiz->der->balance >= 0)
         {
             right_right(raiz);
@@ -104,8 +109,7 @@ void Arbol::balance(Nodo *&raiz, int v)
         {
             right_left(raiz);
         }
-        getch();
-    }   
+    } 
 }
 
 Nodo* Arbol::left_left(Nodo *&raiz)
