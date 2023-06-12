@@ -1,5 +1,6 @@
 Este programa fue disenado para correr en la consola de windows (cmd).
-/nPara asegurar la correcta visualizacion de los datos:
+
+Para asegurar la correcta visualizacion de los datos:
     
     - se recomienda ejecutar el programa en cmd.
     
